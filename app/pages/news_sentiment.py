@@ -2,8 +2,8 @@
 
 import streamlit as st
 
-from app import config
-from app.utils import news_utils, nlp_utils
+from app import config  # Absolute import
+from app.utils import news_utils, nlp_utils  # Absolute import
 
 
 def render_page():

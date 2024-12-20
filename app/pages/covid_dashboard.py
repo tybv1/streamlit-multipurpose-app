@@ -4,8 +4,8 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-from app import config
-from app.utils import data_utils
+from app import config  # Absolute import
+from app.utils import data_utils  # Absolute import
 
 
 def render_page():

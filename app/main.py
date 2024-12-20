@@ -2,8 +2,8 @@
 
 import streamlit as st
 
-from app import config
-from app.pages import news_sentiment, chatbot, covid_dashboard
+from app import config  # Absolute import
+from app.pages import news_sentiment, chatbot, covid_dashboard  # Absolute import
 
 # Basic page config
 st.set_page_config(
