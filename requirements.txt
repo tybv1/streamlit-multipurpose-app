@@ -1,0 +1,15 @@
+streamlit
+beautifulsoup4
+urllib3
+newspaper3k
+nltk
+spacy
+textblob
+gpt4all
+pandas
+plotly
+pytest
+flake8
+black
+pre-commit
+openpyxl
