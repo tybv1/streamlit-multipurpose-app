@@ -1,0 +1,25 @@
+streamlit-multipurpose-app/
+├── main.py
+├── pages/
+│   ├── __init__.py
+│   ├── news_sentiment.py
+│   ├── chatbot.py
+│   └── covid_dashboard.py
+├── utils/
+│   ├── __init__.py
+│   ├── news_utils.py
+│   ├── nlp_utils.py
+│   ├── chatbot_utils.py
+│   └── data_utils.py
+├── config.py
+├── tests/
+│   ├── __init__.py
+│   ├── test_news_utils.py
+│   ├── test_nlp_utils.py
+│   ├── test_chatbot_utils.py
+│   └── test_data_utils.py
+├── models/
+│   └── your_model.gguf  (Place your downloaded model here)
+├── .gitignore
+├── requirements.txt
+└── README.md

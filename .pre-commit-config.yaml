@@ -1,9 +1,44 @@
 repos:
--   repo: https://github.com/psf/black
-    rev: 23.1.0
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0  # Use a recent stable version
     hooks:
-    -   id: black
--   repo: https://github.com/pycqa/flake8
-    rev: 6.0.0
+      - id: check-yaml  # Checks for valid YAML syntax
+      - id: end-of-file-fixer  # Ensures files end with a newline
+      - id: trailing-whitespace  # Trims trailing whitespace
+
+  - repo: https://github.com/psf/black
+    rev: 23.12.0  # Use the latest stable version
     hooks:
-    -   id: flake8
+      - id: black
+        language_version: python3  # Ensure black uses Python 3
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.1.0  # Use a recent stable version
+    hooks:
+      - id: flake8
+        args:
+          - --max-line-length=120  # Match black's line length
+          - --extend-ignore=E203,W503  # Ignore some whitespace rules that conflict with black
+
+
+
+  # - repo: https://github.com/asottile/pyupgrade
+  #   rev: v3.15.0
+  #   hooks:
+  #     - id: pyupgrade
+  #       args:
+  #         - --py38-plus  # Target Python 3.8+ syntax
+
+  # - repo: https://github.com/pre-commit/mirrors-mypy
+  #   rev: v1.8.0
+  #   hooks:
+  #     - id: mypy
+  #       additional_dependencies:
+  #         - types-requests
+  #         - types-setuptools
+  #         - types-lxml
+  #         - types-beautifulsoup4
+  #         - types-urllib3
+  #       args:
+  #         - --strict  # Run mypy in strict mode
+  #         - --ignore-missing-imports  # Ignore missing imports for external libraries

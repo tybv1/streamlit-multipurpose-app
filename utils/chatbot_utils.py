@@ -2,10 +2,11 @@
 
 from gpt4all import GPT4All
 
-from app import config
+import config  # Absolute import (no 'app.' prefix)
 
 # Load the GPT4All model (do this only once when the app starts)
-gpt4all_model = GPT4All(config.GPT4ALL_MODEL_PATH)
+gpt4all_model = GPT4All(config.GPT4ALL_MODEL_PATH, allow_download=False)
+
 
 def get_response(prompt, temperature, top_p):
     """
@@ -21,9 +22,7 @@ def get_response(prompt, temperature, top_p):
     """
     try:
         with gpt4all_model.chat_session():
-            response = gpt4all_model.generate(
-                prompt, temp=temperature, top_p=top_p
-            )
+            response = gpt4all_model.generate(prompt, temp=temperature, top_p=top_p)
             return response
     except Exception as e:
         print(f"Error getting chatbot response: {e}")
@@ -48,10 +47,17 @@ def get_iterative_response(chat_history, temperature, top_p):
         with gpt4all_model.chat_session():
             for message in chat_history:
                 if message["role"] == "user":
-                    gpt4all_model.generate(message["content"], temp=temperature, top_p=top_p)
+                    gpt4all_model.generate(
+                        message["content"], temp=temperature, top_p=top_p
+                    )
                 else:
-                    gpt4all_model.generate(message["content"], temp=temperature, top_p=top_p, response=False)
-        
+                    gpt4all_model.generate(
+                        message["content"],
+                        temp=temperature,
+                        top_p=top_p,
+                        response=False,
+                    )
+
             response = gpt4all_model.generate("", temp=temperature, top_p=top_p)
             return response
     except Exception as e:

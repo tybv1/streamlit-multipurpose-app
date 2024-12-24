@@ -2,8 +2,8 @@
 
 import streamlit as st
 
-from app import config  # Absolute import
-from app.utils import news_utils, nlp_utils  # Absolute import
+import config  # Absolute import
+from utils import news_utils, nlp_utils  # Absolute import
 
 
 def render_page():
@@ -11,9 +11,7 @@ def render_page():
     st.title("📰 News Sentiment Analysis")
 
     # User selects a news category
-    selected_category = st.selectbox(
-        "Select News Category", config.NEWS_CATEGORIES
-    )
+    selected_category = st.selectbox("Select News Category", config.NEWS_CATEGORIES)
 
     # User inputs a free search query
     search_query = st.text_input("Or enter a search query (optional)")

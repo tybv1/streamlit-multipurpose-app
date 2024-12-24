@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen
 from newspaper import Article
 
-from app.utils import nlp_utils  # Absolute import
+# from utils import nlp_utils  # Absolute import
 
 
 def fetch_news(url, max_articles=10):

@@ -45,14 +45,6 @@ This project is a multi-page Streamlit application that demonstrates various Pyt
 5. **Download a GPT4All Model**
 Download a GPT4All compatible model like `Llama-3.2-3B-Instruct-Q4_0.gguf` and place it in a known directory. Update the `config.py` with the model path.
 
-## Setting up the Chatbot
-
-This project uses a local GPT4All language model for the chatbot. You need to download it separately:
-
-1.  **Download a model:** Go to [https://gpt4all.io/](https://gpt4all.io/) and download the `Llama-3.2-3B-Instruct-Q4_0.gguf` model from the "Ecosystem" section.
-2.  **Place the model:** Create a `models` folder in the project's root directory and place the downloaded `.gguf` file inside.
-3.  **Update `config.py`:** Make sure the `GPT4ALL_MODEL_PATH` variable in `config.py` points to the correct location of your model file.
-
 6.  **(Optional) Install pre-commit hooks:**
 
     ```bash
@@ -62,4 +54,4 @@ This project uses a local GPT4All language model for the chatbot. You need to do
 ## Running the Application
 
 ```bash
-streamlit run app/main.py
+streamlit run main.py

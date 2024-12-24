@@ -22,22 +22,19 @@ NEWS_CATEGORIES = [
 MAX_NEWS_ARTICLES = 10
 
 # --- GPT4All Configs ---
-GPT4ALL_MODEL_PATH = (
-    # Update with your actual model path
-    "models/Llama-3.2-3B-Instruct-Q4_0.gguf"
-)
+GPT4ALL_MODEL_PATH = "models/Llama-3.2-3B-Instruct.Q4_0.gguf"
+
 GPT4ALL_DEFAULT_TEMP = 0.7
 GPT4ALL_DEFAULT_TOP_P = 0.9
 
 # --- COVID Dashboard Configs ---
-# These are example links. You'll need to replace them with the actual links to the data.
+# Replace with your actual COVID data links
 COVID_DATA_LINKS = [
     "https://example.com/covid_data_1.xlsx",
     "https://example.com/covid_data_2.xlsx",
     # ... more links
 ]
-# Optional: Include a default data file in your project
-DEFAULT_COVID_DATA_FILE = "app/data/default_covid_data.xlsx"
+DEFAULT_COVID_DATA_FILE = "data/default_covid_data.xlsx"  # Optional default data
 REGIONS = [
     "East of England",
     "London",

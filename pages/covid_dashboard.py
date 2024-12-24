@@ -1,11 +1,12 @@
 """Streamlit page for the COVID-19 Dashboard."""
 
 import streamlit as st
-import pandas as pd
+
+# import pandas as pd
 import plotly.express as px
 
-from app import config  # Absolute import
-from app.utils import data_utils  # Absolute import
+import config  # Absolute import
+from utils import data_utils  # Absolute import
 
 
 def render_page():
@@ -13,14 +14,12 @@ def render_page():
     st.title("📊 COVID-19 Dashboard")
 
     # File uploader
-    uploaded_file = st.file_uploader(
-        "Upload COVID-19 Data (Excel)", type=["xlsx"]
-    )
+    uploaded_file = st.file_uploader("Upload COVID-19 Data (Excel)", type=["xlsx"])
 
     if uploaded_file:
         df = data_utils.load_data(uploaded_file)
         st.session_state.data = df  # Store data in session state
-    elif 'data' in st.session_state:
+    elif "data" in st.session_state:
         # Use data from session state if available
         df = st.session_state.data
     else:
@@ -53,9 +52,7 @@ def render_page():
         )
 
         # --- Filter data based on selections ---
-        df_filtered = df_cleaned[
-            df_cleaned["Region"].isin(selected_regions)
-        ]
+        df_filtered = df_cleaned[df_cleaned["Region"].isin(selected_regions)]
 
         # --- Create Visualizations ---
         st.header("Visualizations")
@@ -84,9 +81,7 @@ def render_page():
 
         # --- Total Diagnosis ---
         st.subheader("Total Diagnosis")
-        fig_diagnosis = px.pie(
-            df_filtered, names="Region", values="Diagnosis Total"
-        )
+        fig_diagnosis = px.pie(df_filtered, names="Region", values="Diagnosis Total")
         st.plotly_chart(fig_diagnosis)
     else:
         st.info("Please upload COVID-19 data to get started.")

@@ -13,3 +13,4 @@ flake8
 black
 pre-commit
 openpyxl
+lxml_html_clean

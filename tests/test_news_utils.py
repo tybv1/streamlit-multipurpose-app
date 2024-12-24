@@ -2,16 +2,20 @@
 
 import pytest
 
-from app.utils import news_utils
+from utils import news_utils  # Absolute import
 
-@pytest.mark.parametrize("invalid_url", [
-    "",
-    " ",
-    "invalid-url",
-    "https://",
-    "ftp://example.com",
-    "https://nonexistent-domain.com",
-])
+
+@pytest.mark.parametrize(
+    "invalid_url",
+    [
+        "",
+        " ",
+        "invalid-url",
+        "https://",
+        "ftp://example.com",
+        "https://nonexistent-domain.com",
+    ],
+)
 def test_fetch_news_invalid_url(invalid_url):
     """Test that fetch_news returns an empty list for invalid URLs."""
     articles = news_utils.fetch_news(invalid_url)
@@ -29,6 +33,7 @@ def test_fetch_news_valid_url():
         assert "title" in article
         assert "link" in article
         assert "published" in article
+
 
 def test_summarize_article_invalid_url():
     """Test that summarize_article returns an empty string for invalid URLs."""

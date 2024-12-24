@@ -58,7 +58,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Exclude the entire 'models' directory
-# Exclude any file with the .gguf extension
-models/  
-*.gguf   
+# models folder
+models/

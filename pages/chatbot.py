@@ -2,8 +2,8 @@
 
 import streamlit as st
 
-from app import config  # Absolute import
-from app.utils import chatbot_utils  # Absolute import
+import config  # Absolute import
+from utils import chatbot_utils  # Absolute import
 
 
 def render_page():
@@ -29,9 +29,7 @@ def render_page():
     )
 
     # Chat mode selection
-    chat_mode = st.radio(
-        "Chat Mode", ["Single Chat", "Iterative Conversation"]
-    )
+    chat_mode = st.radio("Chat Mode", ["Single Chat", "Iterative Conversation"])
 
     # Initialize or get chat history from session state
     if "chat_history" not in st.session_state:
@@ -45,9 +43,7 @@ def render_page():
     # User input
     if user_input := st.chat_input("Your message"):
         # Add user message to chat history
-        st.session_state.chat_history.append(
-            {"role": "user", "content": user_input}
-        )
+        st.session_state.chat_history.append({"role": "user", "content": user_input})
         # Display user message
         with st.chat_message("user"):
             st.markdown(user_input)
@@ -55,9 +51,7 @@ def render_page():
         # Get chatbot response
         with st.spinner("Thinking..."):
             if chat_mode == "Single Chat":
-                response = chatbot_utils.get_response(
-                    user_input, temperature, top_p
-                )
+                response = chatbot_utils.get_response(user_input, temperature, top_p)
             else:  # Iterative Conversation
                 response = chatbot_utils.get_iterative_response(
                     st.session_state.chat_history, temperature, top_p

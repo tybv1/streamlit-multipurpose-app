@@ -1,14 +1,17 @@
 """Unit tests for the data_utils module."""
 
-import pytest
+# import pytest
 import pandas as pd
-from app.utils import data_utils
-from app import config
+from utils import data_utils  # Absolute import
+
+# import config
+
 
 def create_test_excel_file(file_path, data):
     """Helper function to create a test Excel file."""
     df = pd.DataFrame(data)
-    df.to_excel(file_path, index=False, engine='openpyxl')
+    df.to_excel(file_path, index=False, engine="openpyxl")
+
 
 def test_load_data_valid_file():
     """Test loading data from a valid Excel file."""
@@ -30,12 +33,15 @@ def test_load_data_valid_file():
 
     # Clean up the test file
     import os
+
     os.remove(test_file)
+
 
 def test_load_data_invalid_file():
     """Test loading data from an invalid file path."""
     df = data_utils.load_data("invalid_file.xlsx")
     assert df is None
+
 
 def test_clean_data():
     """Test the data cleaning function."""

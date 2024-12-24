@@ -2,7 +2,7 @@
 
 import pytest
 
-from app.utils import nlp_utils
+from utils import nlp_utils  # Absolute import
 
 
 @pytest.mark.parametrize(
@@ -28,7 +28,7 @@ def test_get_sentiment(text, expected_polarity, expected_subjectivity):
         ("This is a factual statement.", False),  # Neutral language
         ("All politicians are corrupt.", True),  # Biased generalization
         ("The data suggests a trend.", False),  # Neutral observation
-        ("", False), # Empty string
+        ("", False),  # Empty string
     ],
 )
 def test_detect_bias(text, expected_bias):
